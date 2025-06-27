@@ -1,0 +1,46 @@
+Schedule a meeting
+def schedule_meeting(name, date_str):
+    calendar.append({"name": name, "date": date_str})
+    print(f"\n📅 Meeting scheduled with {name} on {date_str}.")
+
+# Show today's agenda
+def show_agenda():
+    today = datetime.date.today().strftime("%Y-%m-%d")
+    print(f"\n📆 Today's Meetings ({today}):")
+    for event in calendar:
+        if event["date"] == today:
+            print(f"- Meeting with {event['name']}")
+
+# Main assistant loop
+def run_assistant():
+    print("🤖 Welcome to your AI Networking Assistant!")
+
+    while True:
+        print("\nChoose an action:")
+        print("1. Suggest contacts by interest")
+        print("2. Suggest contacts to reconnect")
+        print("3. Schedule a meeting")
+        print("4. Show today's agenda")
+        print("5. Exit")
+
+        choice = input("Enter choice (1-5): ")
+        if choice == "1":
+            interest = input("Enter an interest (e.g., AI, Fintech): ")
+            suggest_contacts_by_interest(interest)
+        elif choice == "2":
+            suggest_reconnect()
+        elif choice == "3":
+            name = input("Enter contact name: ")
+            date = input("Enter meeting date (YYYY-MM-DD): ")
+            schedule_meeting(name, date)
+        elif choice == "4":
+            show_agenda()
+        elif choice == "5":
+            print("👋 Goodbye!")
+            break
+        else:
+            print("❌ Invalid option, try again.")
+
+# Run the assistant
+if __name__ == "__main__":
+    run_assistant()
